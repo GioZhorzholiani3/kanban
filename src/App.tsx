@@ -4,9 +4,9 @@ import Column from "./components/Column";
 function App() {
   return (
     <div className="App">
-      <Column state="To Do" />
-      <Column state="In Progress" />
-      <Column state="Done" />
+      <Column state="planned" />
+      <Column state="ongoing" />
+      <Column state="done" />
     </div>
   );
 }
