@@ -2,11 +2,12 @@ import { create } from "zustand";
 
 type Task = {
   title: string;
-  state: "planned" | "ongoing" | "done";
+  state: string;
 };
 
 type Store = {
   tasks: Task[];
+  addTask: (title: string, state: string) => void;
 };
 
 export const useStore = create<Store>((set) => ({
@@ -15,13 +16,10 @@ export const useStore = create<Store>((set) => ({
       title: "todo",
       state: "planned",
     },
-    {
-      title: "todo2",
-      state: "ongoing",
-    },
-    {
-      title: "todo3",
-      state: "done",
-    },
   ],
+  addTask: (title, state) => {
+    set((prevState) => ({
+      tasks: [...prevState.tasks, { title, state }],
+    }));
+  },
 }));
